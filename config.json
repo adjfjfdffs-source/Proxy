@@ -1,5 +1,8 @@
 {
-  "auxilio_ativo": true,
-  "alvo": "pescoco",
-  "forca": 70
+  "bypass": false,
+  "aim_assist": false,
+  "precision_disfarcado": false,
+  "sensi_alta": false,
+  "hs_pescoco": false,
+  "back_jump": false
 }

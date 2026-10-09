@@ -3,168 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOUR MOTOS PROOX | Dashboard</title>
+    <title>ARTHUR PROXY SISTEMAVIP</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            font-family: 'Segoe UI', sans-serif;
         }
 
         :root {
-            --roxo-escuro: #1a0f2e;
-            --roxo-meio: #2d1b47;
-            --roxo-claro: #7b2ffd;
+            --roxo: #7b2ffd;
             --rosa: #ff2d91;
-            --rosa-escuro: #c91e75;
-            --verde: #10b981;
-            --cinza-texto: #999;
-            --fundo: #120a1f;
+            --fundo-card: rgba(20, 10, 40, 0.75);
+            --texto: #e0e0e0;
+            --cinza: #888888;
+            --borda: rgba(123, 47, 253, 0.25);
         }
 
         body {
-            background: linear-gradient(135deg, #0f051a 0%, #1a0f2e 50%, #150825 100%);
             min-height: 100vh;
-            padding: 15px;
-            color: #fff;
-        }
-
-        .container {
-            max-width: 520px;
-            margin: 0 auto;
-        }
-
-        .cabecalho-topo {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
+            justify-content: center;
+            background: 
+                linear-gradient(135deg, rgba(15, 5, 26, 0.85), rgba(26, 15, 46, 0.9), rgba(21, 8, 37, 0.85)),
+                url('https://i.pinimg.com/736x/4b/a5/cf/4ba5cfb988c0cc7f48694e2368957ead.jpg') center/cover no-repeat fixed;
+            color: #fff;
+            padding: 20px;
         }
 
-        .logo {
-            font-size: 22px;
+        /* Tela de Login */
+        .tela-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .caixa-login {
+            background: var(--fundo-card);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 45px 35px;
+            width: 100%;
+            max-width: 420px;
+            border: 1px solid var(--borda);
+            text-align: center;
+            box-shadow: 0 0 30px rgba(123, 47, 253, 0.15);
+        }
+
+        .logo-nome {
+            font-size: 32px;
             font-weight: 900;
-            background: linear-gradient(90deg, var(--roxo-claro), var(--rosa));
+            background: linear-gradient(90deg, var(--roxo), var(--rosa));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 0.5px;
+            margin-bottom: 8px;
         }
 
-        .status-online {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(16, 185, 129, 0.1);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: var(--verde);
-        }
-
-        .ponto {
-            width: 8px;
-            height: 8px;
-            background: var(--verde);
-            border-radius: 50%;
-            animation: piscar 1.5s infinite;
-        }
-
-        @keyframes piscar {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .dados-superior {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .dado-card {
-            background: rgba(45, 27, 71, 0.4);
-            border-radius: 12px;
-            padding: 12px 10px;
-            border: 1px solid rgba(123, 47, 253, 0.1);
-        }
-
-        .dado-label {
-            font-size: 10px;
-            color: var(--cinza-texto);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-
-        .dado-valor {
+        .sub-titulo {
             font-size: 13px;
-            font-weight: 600;
-        }
-
-        .dados-linha {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .secao {
-            margin-bottom: 22px;
-        }
-
-        .secao-titulo {
-            font-size: 12px;
-            text-transform: uppercase;
+            color: var(--cinza);
             letter-spacing: 2px;
-            color: var(--cinza-texto);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
         }
 
-        .grade {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .item-card {
-            background: rgba(45, 27, 71, 0.4);
+        .input-codigo {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(15, 5, 26, 0.8);
+            border: 1px solid var(--borda);
             border-radius: 12px;
-            padding: 14px 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .input-codigo:focus {
+            border-color: var(--roxo);
+        }
+
+        .botao-entrar {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, var(--roxo), var(--rosa));
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .botao-entrar:hover {
+            transform: scale(1.02);
+        }
+
+        .aviso-login {
+            margin-top: 18px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Tela Principal - Proxy */
+        .tela-principal {
+            display: none;
+            width: 100%;
+            max-width: 520px;
+        }
+
+        .cabecalho {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s;
+            margin-bottom: 35px;
         }
 
-        .item-card.ativo {
-            border-color: rgba(255, 45, 145, 0.3);
-            background: rgba(255, 45, 145, 0.08);
-            box-shadow: 0 0 12px rgba(255, 45, 145, 0.1);
+        .info-esquerda h1 {
+            font-size: 24px;
+            background: linear-gradient(90deg, var(--roxo), var(--rosa));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .item-nome {
+        .info-esquerda p {
+            font-size: 12px;
+            color: var(--cinza);
+            margin-top: 4px;
+        }
+
+        .botao-sair {
+            padding: 8px 16px;
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            border-radius: 10px;
+            color: #fca5a5;
             font-size: 13px;
             font-weight: 600;
-            line-height: 1.4;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .item-sub {
-            font-size: 10px;
-            color: var(--cinza-texto);
+        .botao-sair:hover {
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        .card {
+            background: var(--fundo-card);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid var(--borda);
+        }
+
+        .linha-opcao {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .linha-opcao:last-child {
+            border-bottom: none;
+        }
+
+        .opcao-nome {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .opcao-desc {
+            font-size: 11px;
+            color: var(--cinza);
             margin-top: 2px;
         }
 
+        /* Switch / Botão */
         .toggle {
-            width: 44px;
-            height: 24px;
-            background: rgba(30, 15, 51, 0.8);
-            border-radius: 12px;
+            width: 50px;
+            height: 26px;
+            background: rgba(42, 26, 64, 0.8);
+            border-radius: 13px;
             cursor: pointer;
             position: relative;
             transition: all 0.3s;
@@ -172,406 +198,180 @@
         }
 
         .toggle.ativo {
-            background: linear-gradient(90deg, var(--roxo-claro), var(--rosa));
+            background: linear-gradient(90deg, var(--roxo), var(--rosa));
+            box-shadow: 0 0 12px rgba(255, 45, 145, 0.25);
             border-color: transparent;
-            box-shadow: 0 0 10px rgba(255, 45, 145, 0.3);
         }
 
-        .toggle-bolinha {
+        .bolinha {
             position: absolute;
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             background: #fff;
             border-radius: 50%;
             top: 2px;
             left: 3px;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: transform 0.3s;
         }
 
-        .toggle.ativo .toggle-bolinha {
-            transform: translateX(20px);
+        .toggle.ativo .bolinha {
+            transform: translateX(22px);
         }
 
-        .item-card.combo {
-            grid-column: span 2;
-            background: linear-gradient(90deg, rgba(123, 47, 253, 0.15), rgba(255, 45, 145, 0.15));
-            border-color: rgba(255, 45, 145, 0.3);
-        }
-
-        .botao-geral {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 14px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: transform 0.2s;
-        }
-
-        .botao-geral:active {
-            transform: scale(0.97);
-        }
-
-        .ligar-tudo {
-            background: linear-gradient(90deg, var(--roxo-claro), var(--rosa));
-            color: white;
-        }
-
-        .desligar-tudo {
-            background: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        .caixa-status {
+        .status-msg {
             margin-top: 20px;
             padding: 14px;
-            background: rgba(26, 16, 44, 0.8);
-            border-radius: 12px;
-            border-left: 3px solid var(--roxo-claro);
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10b981;
+            border-radius: 0 10px 10px 0;
+            color: #99f6e4;
             font-size: 13px;
-            color: #ccc;
             text-align: center;
+            display: none;
         }
 
-        .caixa-status.sucesso {
-            border-left-color: var(--verde);
-            background: rgba(16, 185, 129, 0.08);
-            color: #99f6e4;
+        .status-msg.mostrar {
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- CABEÇALHO -->
-        <div class="cabecalho-topo">
-            <h1 class="logo">ARTHUR MDZ PROXY</h1>
-            <div class="status-online">
-                <span class="ponto"></span>
-                <span>ONLINE</span>
-            </div>
-        </div>
-
-        <!-- DADOS SUPERIORES -->
-        <div class="dados-superior">
-            <div class="dado-card">
-                <div class="dado-label">País</div>
-                <div class="dado-valor">Brazil (BR)</div>
-            </div>
-            <div class="dado-card">
-                <div class="dado-label">Cidade</div>
-                <div class="dado-valor">■■■</div>
-            </div>
-            <div class="dado-card">
-                <div class="dado-label">Hora</div>
-                <div class="dado-valor" id="hora-atual">--:--</div>
-            </div>
-        </div>
-
-        <div class="dados-linha">
-            <div class="dado-card">
-                <div class="dado-label">Data</div>
-                <div class="dado-valor" id="data-atual">--/--</div>
-            </div>
-            <div class="dado-card">
-                <div class="dado-label">Sistema</div>
-                <div class="dado-valor">Android</div>
-            </div>
-            <div class="dado-card">
-                <div class="dado-label">Bateria</div>
-                <div class="dado-valor">75%</div>
-            </div>
-        </div>
-
-        <!-- MIRA & DANO -->
-        <div class="secao">
-            <h3 class="secao-titulo">🎯 MIRA & DANO</h3>
-            <div class="grade">
-                <div class="item-card" id="card-hs-pescoco">
-                    <div>
-                        <div class="item-nome">HS PESCOÇO</div>
-                        <div class="item-sub">Alvo de Precisão</div>
-                    </div>
-                    <div class="toggle" id="t-hs-pescoco" onclick="alternar('hs_pescoco')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-
-                <div class="item-card" id="card-hs-peito">
-                    <div>
-                        <div class="item-nome">HS PEITO</div>
-                        <div class="item-sub">Alvo de Precisão</div>
-                    </div>
-                    <div class="toggle" id="t-hs-peito" onclick="alternar('hs_peito')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-
-                <div class="item-card" id="card-aim-pro">
-                    <div>
-                        <div class="item-nome">AIM PRO</div>
-                        <div class="item-sub">Sensibilidade Máxima</div>
-                    </div>
-                    <div class="toggle" id="t-aim-pro" onclick="alternar('aim_pro')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-
-                <div class="item-card" id="card-hs-pro">
-                    <div>
-                        <div class="item-nome">HEADSHOT PRO</div>
-                        <div class="item-sub">x3 Dano na Cabeça</div>
-                    </div>
-                    <div class="toggle" id="t-hs-pro" onclick="alternar('hs_pro')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-
-                <div class="item-card" id="card-sensi-alta">
-                    <div>
-                        <div class="item-nome">SENSI ALTA</div>
-                        <div class="item-sub">Controle Total</div>
-                    </div>
-                    <div class="toggle" id="t-sensi-alta" onclick="alternar('sensi_alta')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- MOVIMENTO -->
-        <div class="secao">
-            <h3 class="secao-titulo">⚡ MOVIMENTO</h3>
-            <div class="grade">
-                <div class="item-card" id="card-speed-run">
-                    <div>
-                        <div class="item-nome">SPEED RUN</div>
-                        <div class="item-sub">Corrida/Rápido/Máx</div>
-                    </div>
-                    <div class="toggle" id="t-speed-run" onclick="alternar('speed_run')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-
-                <div class="item-card" id="card-high-jump">
-                    <div>
-                        <div class="item-nome">HIGH JUMP</div>
-                        <div class="item-sub">x3 Altura do Pulo</div>
-                    </div>
-                    <div class="toggle" id="t-high-jump" onclick="alternar('high_jump')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-
-                <div class="item-card" id="card-backjump">
-                    <div>
-                        <div class="item-nome">BACK JUMP</div>
-                        <div class="item-sub">Movimento Rápido</div>
-                    </div>
-                    <div class="toggle" id="t-backjump" onclick="alternar('backjump')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-
-                <div class="item-card" id="card-zigzag">
-                    <div>
-                        <div class="item-nome">ZIG ZAG</div>
-                        <div class="item-sub">Movimento Lateral</div>
-                    </div>
-                    <div class="toggle" id="t-zigzag" onclick="alternar('zigzag')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- HP & LOOT -->
-        <div class="secao">
-            <h3 class="secao-titulo">❤️ HP & LOOT</h3>
-            <div class="grade">
-                <div class="item-card" id="card-hp-max">
-                    <div>
-                        <div class="item-nome">HP + AP MAX</div>
-                        <div class="item-sub">Vida + Armadura Máxima</div>
-                    </div>
-                    <div class="toggle" id="t-hp-max" onclick="alternar('hp_max')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-
-                <div class="item-card" id="card-loot">
-                    <div>
-                        <div class="item-nome">LOOT MASTER</div>
-                        <div class="item-sub">Itens Raros + Caixa Grande</div>
-                    </div>
-                    <div class="toggle" id="t-loot" onclick="alternar('loot_master')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ESP & RADAR -->
-        <div class="secao">
-            <h3 class="secao-titulo">👁️ ESP & RADAR</h3>
-            <div class="grade">
-                <div class="item-card" id="card-esp-radar">
-                    <div>
-                        <div class="item-nome">ESP + RADAR</div>
-                        <div class="item-sub">Inimigos/Itens no Mapa</div>
-                    </div>
-                    <div class="toggle" id="t-esp-radar" onclick="alternar('esp_radar')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-
-                <div class="item-card" id="card-bypass-pro">
-                    <div>
-                        <div class="item-nome">BYPASS PRO</div>
-                        <div class="item-sub">Anti-Cheat Avançado</div>
-                    </div>
-                    <div class="toggle" id="t-bypass-pro" onclick="alternar('bypass_pro')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-
-                <div class="item-card" id="card-bypass-basico">
-                    <div>
-                        <div class="item-nome">BYPASS BÁSICO</div>
-                        <div class="item-sub">Anti-Cheat Clássico</div>
-                    </div>
-                    <div class="toggle" id="t-bypass-basico" onclick="alternar('bypass_basico')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- COMBO -->
-        <div class="secao">
-            <h3 class="secao-titulo">🔥 COMBO</h3>
-            <div class="grade">
-                <div class="item-card combo" id="card-combo-killer">
-                    <div>
-                        <div class="item-nome">🔥 COMBO KILLER</div>
-                        <div class="item-sub">Ativar Tudo de Uma Vez</div>
-                    </div>
-                    <div class="toggle" id="t-combo-killer" onclick="alternar('combo_killer')">
-                        <div class="toggle-bolinha"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- BOTÕES GERAIS -->
-        <button class="botao-geral ligar-tudo" onclick="ligarTudo()">✨ TUDO LIGADO</button>
-        <button class="botao-geral desligar-tudo" onclick="desligarTudo()">🔄 DESLIGAR TUDO</button>
-
-        <!-- STATUS -->
-        <div class="caixa-status" id="caixa-status">
-            ⏳ Aguardando ativação...
+    <!-- TELA DE LOGIN -->
+    <div class="tela-login" id="telaLogin">
+        <div class="caixa-login">
+            <h1 class="logo-nome">ARTHUR PROXY</h1>
+            <p class="sub-titulo">SISTEMA DE CONTROLE</p>
+            <input type="text" class="input-codigo" placeholder="Código de acesso" id="codigoAcesso">
+            <button class="botao-entrar" onclick="entrar()">ENTRAR</button>
+            <p class="aviso-login">Acesso protegido • Privado</p>
         </div>
     </div>
 
+    <!-- TELA PRINCIPAL / PROXY -->
+    <div class="tela-principal" id="telaPrincipal">
+        <div class="cabecalho">
+            <div class="info-esquerda">
+                <h1>ARTHUR PROXY</h1>
+                <p>PROXY • CONTROLE REMOTO</p>
+            </div>
+            <button class="botao-sair" onclick="sair()">Sair</button>
+        </div>
+
+        <!-- COLUNA ESQUERDA -->
+        <div class="card">
+            <div class="linha-opcao">
+                <div>
+                    <div class="opcao-nome">BYPASS</div>
+                    <div class="opcao-desc">Proteção antiban</div>
+                </div>
+                <div class="toggle" id="t-bypass" onclick="alternar('bypass')">
+                    <div class="bolinha"></div>
+                </div>
+            </div>
+
+            <div class="linha-opcao">
+                <div>
+                    <div class="opcao-nome">AIM ASSIST</div>
+                    <div class="opcao-desc">Mira silenciosa</div>
+                </div>
+                <div class="toggle" id="t-aim_silent" onclick="alternar('aim_silent')">
+                    <div class="bolinha"></div>
+                </div>
+            </div>
+
+            <div class="linha-opcao">
+                <div>
+                    <div class="opcao-nome">SENSI ALTA</div>
+                    <div class="opcao-desc">Sensibilidade 9x</div>
+                </div>
+                <div class="toggle" id="t-sensi_alta" onclick="alternar('sensi_alta')">
+                    <div class="bolinha"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUNA DIREITA -->
+        <div class="card">
+            <div class="linha-opcao">
+                <div>
+                    <div class="opcao-nome">HS PESCOÇO 30%</div>
+                    <div class="opcao-desc">Trava no pescoço</div>
+                </div>
+                <div class="toggle" id="t-hs_pescoco" onclick="alternar('hs_pescoco')">
+                    <div class="bolinha"></div>
+                </div>
+            </div>
+
+            <div class="linha-opcao">
+                <div>
+                    <div class="opcao-nome">BACK JUMP</div>
+                    <div class="opcao-desc">Movimento</div>
+                </div>
+                <div class="toggle" id="t-back_jump" onclick="alternar('back_jump')">
+                    <div class="bolinha"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-msg" id="statusMsg">✅ SALVO COM SUCESSO!</div>
+    </div>
+
 <script>
-// Atualiza hora
-function atualizarHora(){
-    const agora = new Date();
-    document.getElementById('hora-atual').textContent = agora.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
-    document.getElementById('data-atual').textContent = agora.toLocaleDateString('pt-BR', {day:'2-digit', month:'2-digit'});
-}
-atualizarHora();
-setInterval(atualizarHora, 60000);
+const CODIGO_CORRETO = 'arthur123';
 
 let config = {
-    hs_pescoco: false,
-    hs_peito: false,
-    aim_pro: false,
-    hs_pro: false,
+    bypass: false,
+    aim_silent: false,
     sensi_alta: false,
-    speed_run: false,
-    high_jump: false,
-    backjump: false,
-    zigzag: false,
-    hp_max: false,
-    loot_master: false,
-    esp_radar: false,
-    bypass_pro: false,
-    bypass_basico: false,
-    combo_killer: false
+    hs_pescoco: false,
+    back_jump: false
 };
 
-const mapa = {
-    'hs_pescoco': ['t-hs-pescoco', 'card-hs-pescoco'],
-    'hs_peito': ['t-hs-peito', 'card-hs-peito'],
-    'aim_pro': ['t-aim-pro', 'card-aim-pro'],
-    'hs_pro': ['t-hs-pro', 'card-hs-pro'],
-    'sensi_alta': ['t-sensi-alta', 'card-sensi-alta'],
-    'speed_run': ['t-speed-run', 'card-speed-run'],
-    'high_jump': ['t-high-jump', 'card-high-jump'],
-    'backjump': ['t-backjump', 'card-backjump'],
-    'zigzag': ['t-zigzag', 'card-zigzag'],
-    'hp_max': ['t-hp-max', 'card-hp-max'],
-    'loot_master': ['t-loot', 'card-loot'],
-    'esp_radar': ['t-esp-radar', 'card-esp-radar'],
-    'bypass_pro': ['t-bypass-pro', 'card-bypass-pro'],
-    'bypass_basico': ['t-bypass-basico', 'card-bypass-basico'],
-    'combo_killer': ['t-combo-killer', 'card-combo-killer']
-};
-
-async function alternar(chave){
-    // Se for combo, liga tudo
-    if(chave === 'combo_killer'){
-        const novoEstado = !config.combo_killer;
-        Object.keys(config).forEach(k => config[k] = novoEstado);
+function entrar() {
+    const cod = document.getElementById('codigoAcesso').value.trim();
+    if (cod === CODIGO_CORRETO) {
+        document.getElementById('telaLogin').style.display = 'none';
+        document.getElementById('telaPrincipal').style.display = 'block';
+        carregarEstado();
     } else {
-        config[chave] = !config[chave];
-        // Desliga combos se um item mudar
-        config.combo_killer = false;
+        alert('❌ Código incorreto!');
     }
-
-    atualizarInterface();
-    await salvar();
 }
 
-function atualizarInterface(){
-    Object.entries(mapa).forEach(([chave, [idToggle, idCard]]) => {
-        const ligado = config[chave];
-        document.getElementById(idToggle).classList.toggle('ativo', ligado);
-        document.getElementById(idCard).classList.toggle('ativo', ligado);
+function sair() {
+    document.getElementById('telaPrincipal').style.display = 'none';
+    document.getElementById('telaLogin').style.display = 'flex';
+    document.getElementById('codigoAcesso').value = '';
+}
+
+async function alternar(chave) {
+    config[chave] = !config[chave];
+    document.getElementById('t-' + chave).classList.toggle('ativo', config[chave]);
+    
+    await fetch('/salvar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(config)
     });
+
+    const msg = document.getElementById('statusMsg');
+    msg.classList.add('mostrar');
+    setTimeout(() => msg.classList.remove('mostrar'), 2500);
 }
 
-async function ligarTudo(){
-    Object.keys(config).forEach(k => config[k] = true);
-    atualizarInterface();
-    await salvar();
-}
-
-async function desligarTudo(){
-    Object.keys(config).forEach(k => config[k] = false);
-    atualizarInterface();
-    await salvar();
-}
-
-async function salvar(){
-    try {
-        await fetch('/salvar', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(config)
+function carregarEstado() {
+    fetch('/config.json')
+        .then(r => r.json())
+        .then(dados => {
+            config = { ...config, ...dados };
+            for (const k in config) {
+                if (document.getElementById('t-' + k)) {
+                    document.getElementById('t-' + k).classList.toggle('ativo', config[k]);
+                }
+            }
         });
-        const caixa = document.getElementById('caixa-status');
-        caixa.classList.add('sucesso');
-        caixa.innerHTML = '✅ SALVO COM SUCESSO!<br>Leia em: <b>/config.json</b>';
-    } catch(e) {
-        console.error('Erro ao salvar:', e);
-    }
 }
 </script>
-
 </body>
 </html>

@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARTHUR MODS PROXY V1</title>
+    <title>ARTHUR MODS PROXY</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        :root { --roxo: #7b2ffd; --rosa: #ff2d91; --fundo: rgba(10, 5, 20, 0.95); --card: rgba(20, 10, 40, 0.75); --texto: #e0e0e0; --borda: rgba(123, 47, 253, 0.25); }
-        body { background: linear-gradient(135deg, rgba(15, 5, 40, 0.9), rgba(40, 10, 60, 0.95), rgba(20, 8, 50, 0.9)); min-height: 100vh; color: var(--texto); padding: 20px; }
+        :root { --roxo: #7b2ffd; --rosa: #ff2d91; --fundo: rgba(10,5,20,0.95); --card: rgba(20,10,40,0.75); --texto: #e0e0e0; --borda: rgba(123,47,253,0.25); }
+        body { background: linear-gradient(135deg, rgba(15,5,40,0.9), rgba(40,10,60,0.95), rgba(20,8,50,0.9)); min-height: 100vh; color: var(--texto); padding: 20px; }
         
         .tela-login { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-        .caixa-login { background: var(--card); padding: 40px 30px; border-radius: 20px; border: 1px solid var(--borda); box-shadow: 0 0 30px rgba(123, 47, 253, 0.15); width: 100%; max-width: 400px; }
+        .caixa-login { background: var(--card); padding: 40px 30px; border-radius: 20px; border: 1px solid var(--borda); width: 100%; max-width: 400px; }
         .logo { text-align: center; margin-bottom: 30px; }
         .logo h1 { background: linear-gradient(90deg, var(--roxo), var(--rosa)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 28px; }
-        .input { width: 100%; padding: 14px 18px; margin: 10px 0; background: rgba(15, 5, 30, 0.8); border: 1px solid var(--borda); border-radius: 12px; color: white; font-size: 16px; outline: none; transition: 0.3s; }
-        .input:focus { border-color: var(--roxo); box-shadow: 0 0 10px rgba(123, 47, 253, 0.3); }
+        .input { width: 100%; padding: 14px 18px; margin: 10px 0; background: rgba(15,5,30,0.8); border: 1px solid var(--borda); border-radius: 12px; color: white; font-size: 16px; outline: none; }
+        .input:focus { border-color: var(--roxo); box-shadow: 0 0 10px rgba(123,47,253,0.3); }
         .btn { width: 100%; padding: 14px; margin-top: 10px; background: linear-gradient(90deg, var(--roxo), var(--rosa)); border: none; border-radius: 12px; color: white; font-size: 17px; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .btn:hover { transform: scale(1.03); }
         .erro { color: #ff5555; margin-top: 10px; text-align: center; display: none; }
@@ -23,7 +23,7 @@
         .cabecalho { text-align: center; margin-bottom: 30px; }
         .cabecalho h1 { background: linear-gradient(90deg, var(--roxo), var(--rosa)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 26px; }
         .cartao { background: var(--card); border-radius: 16px; border: 1px solid var(--borda); padding: 20px; margin-bottom: 15px; }
-        .linha { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgba(123, 47, 253, 0.1); }
+        .linha { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgba(123,47,253,0.1); }
         .linha:last-child { border-bottom: none; }
         .info h3 { font-size: 15px; color: white; }
         .info p { font-size: 12px; color: #888; margin-top: 2px; }
@@ -34,18 +34,17 @@
         .toggle.ligado .bolinha { left: 28px; }
         
         .status { text-align: center; padding: 10px; margin-top: 20px; border-radius: 10px; font-size: 13px; }
-        .status.sucesso { background: rgba(0, 200, 100, 0.15); color: #00c864; }
-        .status.erro { background: rgba(255, 50, 50, 0.15); color: #ff3232; }
+        .status.sucesso { background: rgba(0,200,100,0.15); color: #00c864; }
+        .status.erro { background: rgba(255,50,50,0.15); color: #ff3232; }
         .sair { margin-top: 20px; background: transparent; border: 1px solid var(--roxo); color: var(--roxo); }
     </style>
 </head>
 <body>
 
-<!-- TELA DE LOGIN -->
 <div class="tela-login" id="telaLogin">
     <div class="caixa-login">
         <div class="logo">
-            <h1>ARTHUR PROXY V1</h1>
+            <h1>ARTHUR MODS</h1>
             <p style="color:#888; font-size:13px;">Sistema Protegido</p>
         </div>
         <input type="password" class="input" id="senha" placeholder="🔑 Digite sua chave">
@@ -54,15 +53,13 @@
     </div>
 </div>
 
-<!-- TELA PRINCIPAL -->
 <div class="tela-principal" id="telaPrincipal">
     <div class="cabecalho">
-        <h1>ARTHUR PROX</h1>
+        <h1>ARTHUR MODS</h1>
         <p style="color:#888; font-size:13px;">Controle Ativo</p>
     </div>
 
     <div class="cartao">
-        <!-- BYPASS -->
         <div class="linha">
             <div class="info">
                 <h3>🛡️ BYPASS</h3>
@@ -73,29 +70,26 @@
             </div>
         </div>
 
-        <!-- AIM SILENT -->
         <div class="linha">
             <div class="info">
-                <h3>🎯 AIM SILENT SYSTEM</h3>
-                <p>Mira silenciosa</p>
+                <h3>🎯 AIM ASSIST</h3>
+                <p>Auxílio de mira</p>
             </div>
-            <div class="toggle" id="t-aim_silent" onclick="alternar('aim_silent')">
+            <div class="toggle" id="t-aim_assist" onclick="alternar('aim_assist')">
                 <div class="bolinha"></div>
             </div>
         </div>
 
-        <!-- PRECISION DISFARÇADO ✅ NOVO -->
         <div class="linha">
             <div class="info">
                 <h3>🔮 PRECISION DISFARÇADO</h3>
-                <p>Pega certinho sem parecer</p>
+                <p>ESP — Desenha na tela</p>
             </div>
             <div class="toggle" id="t-precision_disfarcado" onclick="alternar('precision_disfarcado')">
                 <div class="bolinha"></div>
             </div>
         </div>
 
-        <!-- SENSI ALTA -->
         <div class="linha">
             <div class="info">
                 <h3>⚡ SENSI ALTA</h3>
@@ -106,7 +100,6 @@
             </div>
         </div>
 
-        <!-- HS PESCOÇO -->
         <div class="linha">
             <div class="info">
                 <h3>💥 HS PESCOÇO</h3>
@@ -117,7 +110,6 @@
             </div>
         </div>
 
-        <!-- BACK JUMP -->
         <div class="linha">
             <div class="info">
                 <h3>🦘 BACK JUMP</h3>
@@ -134,7 +126,7 @@
 </div>
 
 <script>
-const SENHA_CORRETA = "arthur123"; // ← pode mudar a senha aqui
+const SENHA_CORRETA = "arthur123";
 let cfg = {};
 
 async function carregarConfig() {

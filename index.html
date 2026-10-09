@@ -3,375 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARTHUR PROXY SISTEMAVIP</title>
+    <title>ARTHUR MODS PROXY V1</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        :root {
-            --roxo: #7b2ffd;
-            --rosa: #ff2d91;
-            --fundo-card: rgba(20, 10, 40, 0.75);
-            --texto: #e0e0e0;
-            --cinza: #888888;
-            --borda: rgba(123, 47, 253, 0.25);
-        }
-
-        body {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: 
-                linear-gradient(135deg, rgba(15, 5, 26, 0.85), rgba(26, 15, 46, 0.9), rgba(21, 8, 37, 0.85)),
-                url('https://i.pinimg.com/736x/4b/a5/cf/4ba5cfb988c0cc7f48694e2368957ead.jpg') center/cover no-repeat fixed;
-            color: #fff;
-            padding: 20px;
-        }
-
-        /* Tela de Login */
-        .tela-login {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .caixa-login {
-            background: var(--fundo-card);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 45px 35px;
-            width: 100%;
-            max-width: 420px;
-            border: 1px solid var(--borda);
-            text-align: center;
-            box-shadow: 0 0 30px rgba(123, 47, 253, 0.15);
-        }
-
-        .logo-nome {
-            font-size: 32px;
-            font-weight: 900;
-            background: linear-gradient(90deg, var(--roxo), var(--rosa));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-        }
-
-        .sub-titulo {
-            font-size: 13px;
-            color: var(--cinza);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-        }
-
-        .input-codigo {
-            width: 100%;
-            padding: 15px 20px;
-            background: rgba(15, 5, 26, 0.8);
-            border: 1px solid var(--borda);
-            border-radius: 12px;
-            color: #fff;
-            font-size: 16px;
-            outline: none;
-            margin-bottom: 20px;
-            transition: border-color 0.3s;
-        }
-
-        .input-codigo:focus {
-            border-color: var(--roxo);
-        }
-
-        .botao-entrar {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(90deg, var(--roxo), var(--rosa));
-            border: none;
-            border-radius: 12px;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .botao-entrar:hover {
-            transform: scale(1.02);
-        }
-
-        .aviso-login {
-            margin-top: 18px;
-            font-size: 12px;
-            color: #666;
-        }
-
-        /* Tela Principal - Proxy */
-        .tela-principal {
-            display: none;
-            width: 100%;
-            max-width: 520px;
-        }
-
-        .cabecalho {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 35px;
-        }
-
-        .info-esquerda h1 {
-            font-size: 24px;
-            background: linear-gradient(90deg, var(--roxo), var(--rosa));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .info-esquerda p {
-            font-size: 12px;
-            color: var(--cinza);
-            margin-top: 4px;
-        }
-
-        .botao-sair {
-            padding: 8px 16px;
-            background: rgba(239, 68, 68, 0.12);
-            border: 1px solid rgba(239, 68, 68, 0.25);
-            border-radius: 10px;
-            color: #fca5a5;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .botao-sair:hover {
-            background: rgba(239, 68, 68, 0.2);
-        }
-
-        .card {
-            background: var(--fundo-card);
-            backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 20px;
-            border: 1px solid var(--borda);
-        }
-
-        .linha-opcao {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .linha-opcao:last-child {
-            border-bottom: none;
-        }
-
-        .opcao-nome {
-            font-size: 15px;
-            font-weight: 600;
-        }
-
-        .opcao-desc {
-            font-size: 11px;
-            color: var(--cinza);
-            margin-top: 2px;
-        }
-
-        /* Switch / Botão */
-        .toggle {
-            width: 50px;
-            height: 26px;
-            background: rgba(42, 26, 64, 0.8);
-            border-radius: 13px;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .toggle.ativo {
-            background: linear-gradient(90deg, var(--roxo), var(--rosa));
-            box-shadow: 0 0 12px rgba(255, 45, 145, 0.25);
-            border-color: transparent;
-        }
-
-        .bolinha {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #fff;
-            border-radius: 50%;
-            top: 2px;
-            left: 3px;
-            transition: transform 0.3s;
-        }
-
-        .toggle.ativo .bolinha {
-            transform: translateX(22px);
-        }
-
-        .status-msg {
-            margin-top: 20px;
-            padding: 14px;
-            background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10b981;
-            border-radius: 0 10px 10px 0;
-            color: #99f6e4;
-            font-size: 13px;
-            text-align: center;
-            display: none;
-        }
-
-        .status-msg.mostrar {
-            display: block;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        :root { --roxo: #7b2ffd; --rosa: #ff2d91; --fundo: rgba(10, 5, 20, 0.95); --card: rgba(20, 10, 40, 0.75); --texto: #e0e0e0; --borda: rgba(123, 47, 253, 0.25); }
+        body { background: linear-gradient(135deg, rgba(15, 5, 40, 0.9), rgba(40, 10, 60, 0.95), rgba(20, 8, 50, 0.9)); min-height: 100vh; color: var(--texto); padding: 20px; }
+        
+        .tela-login { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .caixa-login { background: var(--card); padding: 40px 30px; border-radius: 20px; border: 1px solid var(--borda); box-shadow: 0 0 30px rgba(123, 47, 253, 0.15); width: 100%; max-width: 400px; }
+        .logo { text-align: center; margin-bottom: 30px; }
+        .logo h1 { background: linear-gradient(90deg, var(--roxo), var(--rosa)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 28px; }
+        .input { width: 100%; padding: 14px 18px; margin: 10px 0; background: rgba(15, 5, 30, 0.8); border: 1px solid var(--borda); border-radius: 12px; color: white; font-size: 16px; outline: none; transition: 0.3s; }
+        .input:focus { border-color: var(--roxo); box-shadow: 0 0 10px rgba(123, 47, 253, 0.3); }
+        .btn { width: 100%; padding: 14px; margin-top: 10px; background: linear-gradient(90deg, var(--roxo), var(--rosa)); border: none; border-radius: 12px; color: white; font-size: 17px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn:hover { transform: scale(1.03); }
+        .erro { color: #ff5555; margin-top: 10px; text-align: center; display: none; }
+        
+        .tela-principal { display: none; max-width: 500px; margin: 0 auto; }
+        .cabecalho { text-align: center; margin-bottom: 30px; }
+        .cabecalho h1 { background: linear-gradient(90deg, var(--roxo), var(--rosa)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 26px; }
+        .cartao { background: var(--card); border-radius: 16px; border: 1px solid var(--borda); padding: 20px; margin-bottom: 15px; }
+        .linha { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgba(123, 47, 253, 0.1); }
+        .linha:last-child { border-bottom: none; }
+        .info h3 { font-size: 15px; color: white; }
+        .info p { font-size: 12px; color: #888; margin-top: 2px; }
+        
+        .toggle { width: 55px; height: 30px; background: #2a2a3c; border-radius: 20px; position: relative; cursor: pointer; transition: 0.3s; }
+        .bolinha { width: 24px; height: 24px; background: white; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: 0.3s; }
+        .toggle.ligado { background: linear-gradient(90deg, var(--roxo), var(--rosa)); }
+        .toggle.ligado .bolinha { left: 28px; }
+        
+        .status { text-align: center; padding: 10px; margin-top: 20px; border-radius: 10px; font-size: 13px; }
+        .status.sucesso { background: rgba(0, 200, 100, 0.15); color: #00c864; }
+        .status.erro { background: rgba(255, 50, 50, 0.15); color: #ff3232; }
+        .sair { margin-top: 20px; background: transparent; border: 1px solid var(--roxo); color: var(--roxo); }
     </style>
 </head>
 <body>
 
-    <!-- TELA DE LOGIN -->
-    <div class="tela-login" id="telaLogin">
-        <div class="caixa-login">
-            <h1 class="logo-nome">ARTHUR PROXY</h1>
-            <p class="sub-titulo">SISTEMA DE CONTROLE</p>
-            <input type="text" class="input-codigo" placeholder="Código de acesso" id="codigoAcesso">
-            <button class="botao-entrar" onclick="entrar()">ENTRAR</button>
-            <p class="aviso-login">Acesso protegido • Privado</p>
+<!-- TELA DE LOGIN -->
+<div class="tela-login" id="telaLogin">
+    <div class="caixa-login">
+        <div class="logo">
+            <h1>ARTHUR PROXY V1</h1>
+            <p style="color:#888; font-size:13px;">Sistema Protegido</p>
+        </div>
+        <input type="password" class="input" id="senha" placeholder="🔑 Digite sua chave">
+        <button class="btn" onclick="entrar()">Entrar</button>
+        <div class="erro" id="msgErro">Chave incorreta!</div>
+    </div>
+</div>
+
+<!-- TELA PRINCIPAL -->
+<div class="tela-principal" id="telaPrincipal">
+    <div class="cabecalho">
+        <h1>ARTHUR PROX</h1>
+        <p style="color:#888; font-size:13px;">Controle Ativo</p>
+    </div>
+
+    <div class="cartao">
+        <!-- BYPASS -->
+        <div class="linha">
+            <div class="info">
+                <h3>🛡️ BYPASS</h3>
+                <p>Proteção antiban</p>
+            </div>
+            <div class="toggle" id="t-bypass" onclick="alternar('bypass')">
+                <div class="bolinha"></div>
+            </div>
+        </div>
+
+        <!-- AIM SILENT -->
+        <div class="linha">
+            <div class="info">
+                <h3>🎯 AIM SILENT SYSTEM</h3>
+                <p>Mira silenciosa</p>
+            </div>
+            <div class="toggle" id="t-aim_silent" onclick="alternar('aim_silent')">
+                <div class="bolinha"></div>
+            </div>
+        </div>
+
+        <!-- PRECISION DISFARÇADO ✅ NOVO -->
+        <div class="linha">
+            <div class="info">
+                <h3>🔮 PRECISION DISFARÇADO</h3>
+                <p>Pega certinho sem parecer</p>
+            </div>
+            <div class="toggle" id="t-precision_disfarcado" onclick="alternar('precision_disfarcado')">
+                <div class="bolinha"></div>
+            </div>
+        </div>
+
+        <!-- SENSI ALTA -->
+        <div class="linha">
+            <div class="info">
+                <h3>⚡ SENSI ALTA</h3>
+                <p>Velocidade máxima</p>
+            </div>
+            <div class="toggle" id="t-sensi_alta" onclick="alternar('sensi_alta')">
+                <div class="bolinha"></div>
+            </div>
+        </div>
+
+        <!-- HS PESCOÇO -->
+        <div class="linha">
+            <div class="info">
+                <h3>💥 HS PESCOÇO</h3>
+                <p>Trava no pescoço</p>
+            </div>
+            <div class="toggle" id="t-hs_pescoco" onclick="alternar('hs_pescoco')">
+                <div class="bolinha"></div>
+            </div>
+        </div>
+
+        <!-- BACK JUMP -->
+        <div class="linha">
+            <div class="info">
+                <h3>🦘 BACK JUMP</h3>
+                <p>Movimento especial</p>
+            </div>
+            <div class="toggle" id="t-back_jump" onclick="alternar('back_jump')">
+                <div class="bolinha"></div>
+            </div>
         </div>
     </div>
 
-    <!-- TELA PRINCIPAL / PROXY -->
-    <div class="tela-principal" id="telaPrincipal">
-        <div class="cabecalho">
-            <div class="info-esquerda">
-                <h1>ARTHUR PROXY</h1>
-                <p>PROXY • CONTROLE REMOTO</p>
-            </div>
-            <button class="botao-sair" onclick="sair()">Sair</button>
-        </div>
-
-        <!-- COLUNA ESQUERDA -->
-        <div class="card">
-            <div class="linha-opcao">
-                <div>
-                    <div class="opcao-nome">BYPASS</div>
-                    <div class="opcao-desc">Proteção antiban</div>
-                </div>
-                <div class="toggle" id="t-bypass" onclick="alternar('bypass')">
-                    <div class="bolinha"></div>
-                </div>
-            </div>
-
-            <div class="linha-opcao">
-                <div>
-                    <div class="opcao-nome">AIM ASSIST</div>
-                    <div class="opcao-desc">Mira silenciosa</div>
-                </div>
-                <div class="toggle" id="t-aim_silent" onclick="alternar('aim_silent')">
-                    <div class="bolinha"></div>
-                </div>
-            </div>
-
-            <div class="linha-opcao">
-                <div>
-                    <div class="opcao-nome">SENSI ALTA</div>
-                    <div class="opcao-desc">Sensibilidade 9x</div>
-                </div>
-                <div class="toggle" id="t-sensi_alta" onclick="alternar('sensi_alta')">
-                    <div class="bolinha"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- COLUNA DIREITA -->
-        <div class="card">
-            <div class="linha-opcao">
-                <div>
-                    <div class="opcao-nome">HS PESCOÇO 30%</div>
-                    <div class="opcao-desc">Trava no pescoço</div>
-                </div>
-                <div class="toggle" id="t-hs_pescoco" onclick="alternar('hs_pescoco')">
-                    <div class="bolinha"></div>
-                </div>
-            </div>
-
-            <div class="linha-opcao">
-                <div>
-                    <div class="opcao-nome">BACK JUMP</div>
-                    <div class="opcao-desc">Movimento</div>
-                </div>
-                <div class="toggle" id="t-back_jump" onclick="alternar('back_jump')">
-                    <div class="bolinha"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="status-msg" id="statusMsg">✅ SALVO COM SUCESSO!</div>
-    </div>
+    <div class="status" id="status">Carregando...</div>
+    <button class="btn sair" onclick="sair()">Sair</button>
+</div>
 
 <script>
-const CODIGO_CORRETO = 'arthur123';
+const SENHA_CORRETA = "arthur123"; // ← pode mudar a senha aqui
+let cfg = {};
 
-let config = {
-    bypass: false,
-    aim_silent: false,
-    sensi_alta: false,
-    hs_pescoco: false,
-    back_jump: false
-};
+async function carregarConfig() {
+    const res = await fetch('/config.json');
+    cfg = await res.json();
+    atualizarBotoes();
+    document.getElementById('status').className = 'status sucesso';
+    document.getElementById('status').innerText = '✅ Sincronizado';
+}
 
-function entrar() {
-    const cod = document.getElementById('codigoAcesso').value.trim();
-    if (cod === CODIGO_CORRETO) {
-        document.getElementById('telaLogin').style.display = 'none';
-        document.getElementById('telaPrincipal').style.display = 'block';
-        carregarEstado();
-    } else {
-        alert('❌ Código incorreto!');
+function atualizarBotoes() {
+    for (let chave in cfg) {
+        const el = document.getElementById(`t-${chave}`);
+        if (el) el.classList.toggle('ligado', cfg[chave]);
     }
 }
 
-function sair() {
-    document.getElementById('telaPrincipal').style.display = 'none';
-    document.getElementById('telaLogin').style.display = 'flex';
-    document.getElementById('codigoAcesso').value = '';
-}
-
 async function alternar(chave) {
-    config[chave] = !config[chave];
-    document.getElementById('t-' + chave).classList.toggle('ativo', config[chave]);
+    cfg[chave] = !cfg[chave];
+    atualizarBotoes();
     
     await fetch('/salvar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(config)
+        body: JSON.stringify(cfg)
     });
-
-    const msg = document.getElementById('statusMsg');
-    msg.classList.add('mostrar');
-    setTimeout(() => msg.classList.remove('mostrar'), 2500);
+    
+    document.getElementById('status').className = 'status sucesso';
+    document.getElementById('status').innerText = '✅ Salvo';
 }
 
-function carregarEstado() {
-    fetch('/config.json')
-        .then(r => r.json())
-        .then(dados => {
-            config = { ...config, ...dados };
-            for (const k in config) {
-                if (document.getElementById('t-' + k)) {
-                    document.getElementById('t-' + k).classList.toggle('ativo', config[k]);
-                }
-            }
-        });
+function entrar() {
+    const senha = document.getElementById('senha').value;
+    if (senha === SENHA_CORRETA) {
+        document.getElementById('telaLogin').style.display = 'none';
+        document.getElementById('telaPrincipal').style.display = 'block';
+        carregarConfig();
+    } else {
+        document.getElementById('msgErro').style.display = 'block';
+    }
+}
+
+function sair() {
+    document.getElementById('telaLogin').style.display = 'flex';
+    document.getElementById('telaPrincipal').style.display = 'none';
+    document.getElementById('senha').value = '';
+    document.getElementById('msgErro').style.display = 'none';
 }
 </script>
+
 </body>
 </html>

@@ -3,178 +3,546 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARTHUR MODS PROXY</title>
+    <title>ARTHUR MODZ — Painel</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        :root { --roxo: #7b2ffd; --rosa: #ff2d91; --fundo: rgba(10,5,20,0.95); --card: rgba(20,10,40,0.75); --texto: #e0e0e0; --borda: rgba(123,47,253,0.25); }
-        body { background: linear-gradient(135deg, rgba(15,5,40,0.9), rgba(40,10,60,0.95), rgba(20,8,50,0.9)); min-height: 100vh; color: var(--texto); padding: 20px; }
-        
-        .tela-login { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-        .caixa-login { background: var(--card); padding: 40px 30px; border-radius: 20px; border: 1px solid var(--borda); width: 100%; max-width: 400px; }
-        .logo { text-align: center; margin-bottom: 30px; }
-        .logo h1 { background: linear-gradient(90deg, var(--roxo), var(--rosa)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 28px; }
-        .input { width: 100%; padding: 14px 18px; margin: 10px 0; background: rgba(15,5,30,0.8); border: 1px solid var(--borda); border-radius: 12px; color: white; font-size: 16px; outline: none; }
-        .input:focus { border-color: var(--roxo); box-shadow: 0 0 10px rgba(123,47,253,0.3); }
-        .btn { width: 100%; padding: 14px; margin-top: 10px; background: linear-gradient(90deg, var(--roxo), var(--rosa)); border: none; border-radius: 12px; color: white; font-size: 17px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .btn:hover { transform: scale(1.03); }
-        .erro { color: #ff5555; margin-top: 10px; text-align: center; display: none; }
-        
-        .tela-principal { display: none; max-width: 500px; margin: 0 auto; }
-        .cabecalho { text-align: center; margin-bottom: 30px; }
-        .cabecalho h1 { background: linear-gradient(90deg, var(--roxo), var(--rosa)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 26px; }
-        .cartao { background: var(--card); border-radius: 16px; border: 1px solid var(--borda); padding: 20px; margin-bottom: 15px; }
-        .linha { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgba(123,47,253,0.1); }
-        .linha:last-child { border-bottom: none; }
-        .info h3 { font-size: 15px; color: white; }
-        .info p { font-size: 12px; color: #888; margin-top: 2px; }
-        
-        .toggle { width: 55px; height: 30px; background: #2a2a3c; border-radius: 20px; position: relative; cursor: pointer; transition: 0.3s; }
-        .bolinha { width: 24px; height: 24px; background: white; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: 0.3s; }
-        .toggle.ligado { background: linear-gradient(90deg, var(--roxo), var(--rosa)); }
-        .toggle.ligado .bolinha { left: 28px; }
-        
-        .status { text-align: center; padding: 10px; margin-top: 20px; border-radius: 10px; font-size: 13px; }
-        .status.sucesso { background: rgba(0,200,100,0.15); color: #00c864; }
-        .status.erro { background: rgba(255,50,50,0.15); color: #ff3232; }
-        .sair { margin-top: 20px; background: transparent; border: 1px solid var(--roxo); color: var(--roxo); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        :root {
+            --fundo: #0f0f12;
+            --card: #1a1a1f;
+            --borda: #2a2a30;
+            --verde: #00d977;
+            --texto: #e0e0e0;
+            --texto-claro: #999;
+            --azul: #25a8ff;
+        }
+        body {
+            background: var(--fundo);
+            color: var(--texto);
+            min-height: 100vh;
+        }
+
+        /* TELA DE LOGIN */
+        .tela-login {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .escondida {
+            display: none !important;
+        }
+        .login-card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 35px 25px;
+            width: 100%;
+            max-width: 380px;
+            border: 1px solid rgba(0, 217, 119, 0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .login-logo {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--verde), #00ff99);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+        .login-titulo {
+            text-align: center;
+            font-size: 15px;
+            color: var(--texto-claro);
+            margin-bottom: 25px;
+        }
+        .input-grupo {
+            margin-bottom: 18px;
+        }
+        .input-label {
+            font-size: 13px;
+            color: var(--texto-claro);
+            margin-bottom: 6px;
+            display: block;
+        }
+        .input-caixa {
+            width: 100%;
+            padding: 14px 16px;
+            background: #252530;
+            border: 1px solid var(--borda);
+            border-radius: 10px;
+            color: white;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+        .input-caixa:focus {
+            border-color: var(--verde);
+            box-shadow: 0 0 0 2px rgba(0,217,119,0.2);
+        }
+        .botao-entrar {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, var(--verde), #00cc66);
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0, 217, 119, 0.3);
+            transition: 0.2s;
+        }
+        .botao-entrar:active {
+            transform: scale(0.97);
+        }
+        .erro {
+            color: #ff4444;
+            text-align: center;
+            margin-top: 12px;
+            font-size: 13px;
+            display: none;
+        }
+
+        /* PAINEL PRINCIPAL */
+        .painel {
+            padding: 20px;
+            max-width: 450px;
+            margin: 0 auto;
+            display: none;
+        }
+        .painel-visivel {
+            display: block;
+        }
+        .cabecalho {
+            padding: 10px 0 20px;
+        }
+        .nome-sistema {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--verde), #00ff99);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .status-linha {
+            display: flex;
+            gap: 15px;
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--texto-claro);
+            flex-wrap: wrap;
+        }
+        .status-online {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--verde);
+        }
+        .ponto {
+            width: 8px;
+            height: 8px;
+            background: var(--verde);
+            border-radius: 50%;
+            animation: piscar 2s infinite;
+        }
+        @keyframes piscar {
+            0%,100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .ip-texto {
+            font-family: monospace;
+            color: var(--azul);
+        }
+
+        .abas {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        .aba {
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
+            color: var(--texto-claro);
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .aba.ativa {
+            background: rgba(0, 217, 119, 0.1);
+            color: var(--verde);
+            border-bottom: 2px solid var(--verde);
+        }
+
+        .conteudo {
+            display: none;
+        }
+        .conteudo.ativo {
+            display: block;
+        }
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+            border: 1px solid var(--borda);
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--borda);
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        .item-nome {
+            font-size: 14px;
+        }
+        .item-desc {
+            font-size: 11px;
+            color: var(--texto-claro);
+            margin-top: 3px;
+        }
+
+        /* Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 26px;
+        }
+        .switch input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .toggle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #2c2c34;
+            border-radius: 26px;
+            transition: 0.3s;
+        }
+        .toggle:before {
+            content: "";
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        input:checked + .toggle {
+            background: var(--verde);
+            box-shadow: 0 0 8px rgba(0, 217, 119, 0.4);
+        }
+        input:checked + .toggle:before {
+            transform: translateX(22px);
+        }
+
+        /* Botão Injetar */
+        .botao-injetar {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(90deg, var(--verde), #00cc66);
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0, 217, 119, 0.3);
+            transition: 0.2s;
+        }
+        .botao-injetar.injetado {
+            background: linear-gradient(90deg, #25a8ff, #0088dd);
+            box-shadow: 0 4px 15px rgba(37, 168, 255, 0.3);
+        }
+        .botao-sair {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid #333;
+            border-radius: 10px;
+            color: #888;
+            margin-top: 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
-<div class="tela-login" id="telaLogin">
-    <div class="caixa-login">
-        <div class="logo">
-            <h1>ARTHUR MODS</h1>
-            <p style="color:#888; font-size:13px;">Sistema Protegido</p>
-        </div>
-        <input type="password" class="input" id="senha" placeholder="🔑 Digite sua chave">
-        <button class="btn" onclick="entrar()">Entrar</button>
-        <div class="erro" id="msgErro">Chave incorreta!</div>
-    </div>
-</div>
-
-<div class="tela-principal" id="telaPrincipal">
-    <div class="cabecalho">
-        <h1>ARTHUR MODS</h1>
-        <p style="color:#888; font-size:13px;">Controle Ativo</p>
-    </div>
-
-    <div class="cartao">
-        <div class="linha">
-            <div class="info">
-                <h3>🛡️ BYPASS</h3>
-                <p>Proteção antiban</p>
+    <!-- TELA DE LOGIN -->
+    <div class="tela-login" id="telaLogin">
+        <div class="login-card">
+            <div class="login-logo">🔥 ARTHUR MODZ</div>
+            <div class="login-titulo">Acesse o painel de controle</div>
+            
+            <div class="input-grupo">
+                <label class="input-label">Usuário</label>
+                <input type="text" class="input-caixa" id="usuario" placeholder="Digite seu usuário">
             </div>
-            <div class="toggle" id="t-bypass" onclick="alternar('bypass')">
-                <div class="bolinha"></div>
+            
+            <div class="input-grupo">
+                <label class="input-label">Senha</label>
+                <input type="password" class="input-caixa" id="senha" placeholder="Digite sua senha">
             </div>
-        </div>
-
-        <div class="linha">
-            <div class="info">
-                <h3>🎯 AIM ASSIST</h3>
-                <p>Auxílio de mira</p>
-            </div>
-            <div class="toggle" id="t-aim_assist" onclick="alternar('aim_assist')">
-                <div class="bolinha"></div>
-            </div>
-        </div>
-
-        <div class="linha">
-            <div class="info">
-                <h3>🔮 PRECISION DISFARÇADO</h3>
-                <p>ESP — Desenha na tela</p>
-            </div>
-            <div class="toggle" id="t-precision_disfarcado" onclick="alternar('precision_disfarcado')">
-                <div class="bolinha"></div>
-            </div>
-        </div>
-
-        <div class="linha">
-            <div class="info">
-                <h3>⚡ SENSI ALTA</h3>
-                <p>Velocidade máxima</p>
-            </div>
-            <div class="toggle" id="t-sensi_alta" onclick="alternar('sensi_alta')">
-                <div class="bolinha"></div>
-            </div>
-        </div>
-
-        <div class="linha">
-            <div class="info">
-                <h3>💥 HS PESCOÇO</h3>
-                <p>Trava no pescoço</p>
-            </div>
-            <div class="toggle" id="t-hs_pescoco" onclick="alternar('hs_pescoco')">
-                <div class="bolinha"></div>
-            </div>
-        </div>
-
-        <div class="linha">
-            <div class="info">
-                <h3>🦘 BACK JUMP</h3>
-                <p>Movimento especial</p>
-            </div>
-            <div class="toggle" id="t-back_jump" onclick="alternar('back_jump')">
-                <div class="bolinha"></div>
-            </div>
+            
+            <button class="botao-entrar" id="btnEntrar">ENTRAR</button>
+            <div class="erro" id="msgErro">Usuário ou senha incorretos!</div>
         </div>
     </div>
 
-    <div class="status" id="status">Carregando...</div>
-    <button class="btn sair" onclick="sair()">Sair</button>
-</div>
+    <!-- PAINEL PRINCIPAL -->
+    <div class="painel" id="painel">
+        <div class="cabecalho">
+            <h1 class="nome-sistema">🔥 ARTHUR MODZ</h1>
+            <div class="status-linha">
+                <div class="status-online">
+                    <span class="ponto"></span>
+                    Online
+                </div>
+                <div>IP: <span class="ip-texto" id="ip">Carregando...</span></div>
+            </div>
+        </div>
+
+        <div class="abas">
+            <button class="aba ativa" data-alvo="aimbot">Aimbot</button>
+            <button class="aba" data-alvo="esp">ESP / Caixa</button>
+            <button class="aba" data-alvo="bypass">Bypass</button>
+            <button class="aba" data-alvo="outros">Outros</button>
+        </div>
+
+        <!-- AIMBOT -->
+        <div class="conteudo ativo" id="aimbot">
+            <div class="card">
+                <div class="item">
+                    <div>
+                        <div class="item-nome">Mira Automática</div>
+                        <div class="item-desc">Mira no inimigo mais próximo</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_aimbot">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+                <div class="item">
+                    <div>
+                        <div class="item-nome">Smooth Aim</div>
+                        <div class="item-desc">Suaviza o movimento da mira</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_smooth">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+                <div class="item">
+                    <div>
+                        <div class="item-nome">Prioridade de Alvo</div>
+                        <div class="item-desc">Por distância ou ameaça</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_prioridade">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+                <div class="item">
+                    <div>
+                        <div class="item-nome">Visível Apenas</div>
+                        <div class="item-desc">Só mira se estiver aparecendo</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_visivel">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+            </div>
+            <button class="botao-injetar" id="inj1">🔌 INJETAR</button>
+        </div>
+
+        <!-- ESP / CAIXA -->
+        <div class="conteudo" id="esp">
+            <div class="card">
+                <div class="item">
+                    <div class="item-nome">Caixa no Inimigo</div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_caixa">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+                <div class="item">
+                    <div class="item-nome">Nome + Distância</div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_nome">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+                <div class="item">
+                    <div class="item-nome">Linha até o Inimigo</div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_linha">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+                <div class="item">
+                    <div class="item-nome">Vida + Barra</div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_vida">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+            </div>
+            <button class="botao-injetar" id="inj2">🔌 INJETAR</button>
+        </div>
+
+        <!-- BYPASS -->
+        <div class="conteudo" id="bypass">
+            <div class="card">
+                <div class="item">
+                    <div class="item-nome">Bypass Anti-Detect</div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_bypass">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+                <div class="item">
+                    <div class="item-nome">Ocultar Modificação</div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_ocultar">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+                <div class="item">
+                    <div class="item-nome">Proteção de Sessão</div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_sessao">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+            </div>
+            <button class="botao-injetar" id="inj3">🔌 INJETAR</button>
+        </div>
+
+        <!-- OUTROS -->
+        <div class="conteudo" id="outros">
+            <div class="card">
+                <div class="item">
+                    <div class="item-nome">Back Jump</div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_backjump">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+                <div class="item">
+                    <div class="item-nome">Sensibilidade Alta</div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_sensialta">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+                <div class="item">
+                    <div class="item-nome">Velocidade Aumentada</div>
+                    <label class="switch">
+                        <input type="checkbox" id="chk_velocidade">
+                        <span class="toggle"></span>
+                    </label>
+                </div>
+            </div>
+            <button class="botao-injetar" id="inj4">🔌 INJETAR</button>
+            <button class="botao-sair" id="btnSair">Sair da conta</button>
+        </div>
+    </div>
 
 <script>
-const SENHA_CORRETA = "arthur123";
-let cfg = {};
+    // Pegar IP
+    fetch('https://api.ipify.org?format=json')
+        .then(r => r.json())
+        .then(d => {
+            document.getElementById('ip').textContent = d.ip;
+        })
+        .catch(() => {
+            document.getElementById('ip').textContent = 'Indisponível';
+        });
 
-async function carregarConfig() {
-    const res = await fetch('/config.json');
-    cfg = await res.json();
-    atualizarBotoes();
-    document.getElementById('status').className = 'status sucesso';
-    document.getElementById('status').innerText = '✅ Sincronizado';
-}
+    // LOGIN — ALTERE AQUI SEU USUÁRIO E SENHA
+    const USUARIO_CORRETO = 'arthur';
+    const SENHA_CORRETA = '123456';
 
-function atualizarBotoes() {
-    for (let chave in cfg) {
-        const el = document.getElementById(`t-${chave}`);
-        if (el) el.classList.toggle('ligado', cfg[chave]);
-    }
-}
-
-async function alternar(chave) {
-    cfg[chave] = !cfg[chave];
-    atualizarBotoes();
-    
-    await fetch('/salvar', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(cfg)
+    document.getElementById('btnEntrar').addEventListener('click', entrar);
+    document.getElementById('senha').addEventListener('keypress', e => {
+        if (e.key === 'Enter') entrar();
     });
-    
-    document.getElementById('status').className = 'status sucesso';
-    document.getElementById('status').innerText = '✅ Salvo';
-}
 
-function entrar() {
-    const senha = document.getElementById('senha').value;
-    if (senha === SENHA_CORRETA) {
-        document.getElementById('telaLogin').style.display = 'none';
-        document.getElementById('telaPrincipal').style.display = 'block';
-        carregarConfig();
-    } else {
-        document.getElementById('msgErro').style.display = 'block';
+    function entrar() {
+        const user = document.getElementById('usuario').value.trim();
+        const pass = document.getElementById('senha').value.trim();
+        
+        if (user === USUARIO_CORRETO && pass === SENHA_CORRETA) {
+            document.getElementById('telaLogin').classList.add('escondida');
+            document.getElementById('painel').classList.add('painel-visivel');
+            localStorage.setItem('logado', 'sim');
+        } else {
+            document.getElementById('msgErro').style.display = 'block';
+        }
     }
-}
 
-function sair() {
-    document.getElementById('telaLogin').style.display = 'flex';
-    document.getElementById('telaPrincipal').style.display = 'none';
-    document.getElementById('senha').value = '';
-    document.getElementById('msgErro').style.display = 'none';
-}
+    // Verificar se já estava logado
+    if (localStorage.getItem('logado') === 'sim') {
+        document.getElementById('telaLogin').classList.add('escondida');
+        document.getElementById('painel').classList.add('painel-visivel');
+    }
+
+    // Sair
+    document.getElementById('btnSair').addEventListener('click', () => {
+        localStorage.removeItem('logado');
+        location.reload();
+    });
+
+    // Sistema de Abas
+    document.querySelectorAll('.aba').forEach(botao => {
+        botao.addEventListener('click', () => {
+            const idAlvo = botao.getAttribute('data-alvo');
+            document.querySelectorAll('.aba').forEach(b => b.classList.remove('ativa'));
+            document.querySelectorAll('.conteudo').forEach(c => c.classList.remove('ativa'));
+            botao.classList.add('ativa');
+            document.getElementById(idAlvo).classList.add('ativa');
+        });
+    });
+
+    // Carregar e salvar opções
+    document.querySelectorAll('input[type="checkbox"]').forEach(chk => {
+        if (localStorage.getItem(chk.id) === 'true') chk.checked = true;
+        chk.addEventListener('change', () => {
+            localStorage.setItem(chk.id, chk.checked);
+        });
+    });
+
+    // Botão Injetar
+    document.querySelectorAll('.botao-injetar').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.classList.toggle('injetado');
+            this.textContent = this.classList.contains('injetado') ? '✅ INJETADO' : '🔌 INJETAR';
+        });
+    });
 </script>
 
 </body>
